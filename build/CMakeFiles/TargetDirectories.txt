@@ -1,0 +1,3 @@
+C:/Users/pr0h3/CStuff/repos/gameProject/build/CMakeFiles/main.dir
+C:/Users/pr0h3/CStuff/repos/gameProject/build/CMakeFiles/edit_cache.dir
+C:/Users/pr0h3/CStuff/repos/gameProject/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,6 @@
+# ninja log v6
+4	473	7527155438194578	CMakeFiles/main.dir/src/main.cpp.obj	1b4233f736b4dce3
+479	657	7527155442932754	main.exe	80631ca7159c0c08
+30	134	7527157601612694	CMakeFiles/main.dir/src/main.cpp.obj	1b4233f736b4dce3
+20	570	7527157601510563	CMakeFiles/main.dir/src/hw.cpp.obj	71a2954b8eafc9ab
+574	752	7527157607040250	main.exe	adc63e6278c8d75b
