@@ -1,4 +1,4 @@
-# gameProject
+# GameProject
 me testing out rendering and making a game
 
-its me just rtying to do openGl
+will be trying raylibc instead

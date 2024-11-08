@@ -1,8 +1,8 @@
-#include "../include/hw.h"
+#include <iostream>
 
 int main() {
 
-  helloWorld();
+  std::cout << "Hello world" << std::endl;
 
   return 0;
 }
