@@ -1,14 +1,21 @@
+#set minimum cmake version required
 cmake_minimum_required(VERSION 3.10)
 
-# Setting up C++ standard
-project(gameProject LANGUAGES CXX)
+#set up porject name and language
+project(GameProject VERSION 1.0 LANGUAGES CXX)
 
+#set c++ standards
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED true)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Adding source files and making executable
-file(GLOB_RECURSE SOURCES "src/*.cpp")
-add_executable(main ${SOURCES} )  # Add glad.c directly to the executable
+file(GLOB SOURCES "src/*.cpp")
 
-# Specifying where to look for header files and libraries
-target_include_directories(main PRIVATE include)
+#add executable for project
+add_executable(game ${SOURCES})
+
+#include header files in include folder
+target_include_directories(game PRIVATE include)
+
+#link raylib and other req libraries
+target_link_directories(game PRIVATE lib)
+target_link_libraries(game raylib opengl32 gdi32 winmm)
