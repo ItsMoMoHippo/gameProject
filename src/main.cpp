@@ -1,69 +1,113 @@
-/*******************************************************************************************
- *
- *   raylib [core] example - Basic window
- *
- *   Welcome to raylib!
- *
- *   To test examples, just press F6 and execute raylib_compile_execute script
- *   Note that compiled executable is placed in the same folder as .c file
- *
- *   You can find all basic examples on C:\raylib\raylib\examples folder or
- *   raylib official webpage: www.raylib.com
- *
- *   Enjoy using raylib. :)
- *
- *   Example originally created with raylib 1.0, last time updated with
- *raylib 1.0
- *
- *   Example licensed under an unmodified zlib/libpng license, which is an
- *OSI-certified, BSD-like license that allows static linking with closed source
- *software
- *
- *   Copyright (c) 2013-2024 Ramon Santamaria (@raysan5)
- *
- ********************************************************************************************/
-
 #include "../include/raylib.h"
 
-//------------------------------------------------------------------------------------
-// Program main entry point
-//------------------------------------------------------------------------------------
+typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
+
 int main(void) {
+
+  //--------------------------------------------------------------------
   // Initialization
-  //--------------------------------------------------------------------------------------
   const int screenWidth = 800;
-  const int screenHeight = 450;
+  const int screenHeight = 600;
 
-  InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+  InitWindow(screenWidth, screenHeight, "Game Window");
 
-  SetTargetFPS(60); // Set our game to run at 60 frames-per-second
-  //--------------------------------------------------------------------------------------
+  GameScreen currentScreen = LOGO;
+
+  // initialise global variables and load data
+  int frameCounter = 0;
+  SetTargetFPS(60);
+  //--------------------------------------------------------------------
 
   // Main game loop
-  while (!WindowShouldClose()) // Detect window close button or ESC key
-  {
-    // Update
-    //----------------------------------------------------------------------------------
-    // TODO: Update your variables here
-    //----------------------------------------------------------------------------------
+  while (!WindowShouldClose()) {
 
-    // Draw
-    //----------------------------------------------------------------------------------
+    //------------------------------------------------------------------
+    // Update
+    switch (currentScreen) {
+    case LOGO:
+      // todo: update logo screen variables here
+      frameCounter++; // count frames
+                      // after 2 seconds pass jump to title screen
+      if (frameCounter > 120) {
+        currentScreen = TITLE;
+      }
+      break;
+    case TITLE:
+      // todo: update title screen variable here
+
+      // press enter to change to gameplay screen
+      if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP)) {
+        currentScreen = GAMEPLAY;
+      }
+      break;
+    case GAMEPLAY:
+      // todo: update gamplay screen variables here
+
+      // press enter to change to ending screen
+      if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP)) {
+        currentScreen = ENDING;
+      }
+      break;
+    case ENDING:
+      // todo: update ending screen variables here
+
+      // press enter to change to title screen
+      if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP)) {
+        currentScreen = TITLE;
+      }
+      break;
+    default:
+      break;
+    }
+    //-----------------------------------------------------------------
+
+    //-----------------------------------------------------------------
+    // draw
     BeginDrawing();
 
     ClearBackground(RAYWHITE);
 
-    DrawText("Congrats! You created your first window!", 190, 200, 20,
-             LIGHTGRAY);
+    switch (currentScreen) {
+    case LOGO:
+      // todo: draw logo screen
+      DrawText("Logo Screen", 20, 20, 40, LIGHTGRAY);
+      DrawText("Wait fro 2 seconds...", 290, 220, 20, GRAY);
+      break;
+    case TITLE:
+      // todo: draw title screen
+      DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
+      DrawText("TITLE SCREEN", 20, 20, 40, DARKGREEN);
+      DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20,
+               DARKGREEN);
+      break;
+    case GAMEPLAY:
+      // todo: draw gameplay screen
+      DrawRectangle(0, 0, screenWidth, screenHeight, PURPLE);
+      DrawText("GAMEPLAY SCREEN", 20, 20, 40, MAROON);
+      DrawText("PRESS ENTER or TAP to JUMP to ENDING SCREEN", 130, 220, 20,
+               MAROON);
+      break;
+    case ENDING:
+      // todo: draw ending screen
+      DrawRectangle(0, 0, screenWidth, screenHeight, BLUE);
+      DrawText("ENDING SCREEN", 20, 20, 40, DARKBLUE);
+      DrawText("PRESS ENTER or TAP to RETURN to TITLE SCREEN", 120, 220, 20,
+               DARKBLUE);
+      break;
+    defualt:
+      break;
+    }
 
     EndDrawing();
-    //----------------------------------------------------------------------------------
+    //-----------------------------------------------------------------
   }
 
-  // De-Initialization
-  //--------------------------------------------------------------------------------------
-  CloseWindow(); // Close window and OpenGL context
-  //--------------------------------------------------------------------------------------
+  //-------------------------------------------------------------------
+  // de-initialise
+
+  // todo: unload data
+  CloseWindow();
+  //-------------------------------------------------------------------
 
   return 0;
 }
