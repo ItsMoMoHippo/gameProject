@@ -2,6 +2,8 @@
 
 typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
 
+void setfocus();
+
 int main(void) {
 
   //--------------------------------------------------------------------
@@ -21,6 +23,7 @@ int main(void) {
   // Main game loop
   while (!WindowShouldClose()) {
 
+    setfocus();
     //------------------------------------------------------------------
     // Update
     switch (currentScreen) {
@@ -71,7 +74,11 @@ int main(void) {
     case LOGO:
       // todo: draw logo screen
       DrawText("Logo Screen", 20, 20, 40, LIGHTGRAY);
-      DrawText("Wait fro 2 seconds...", 290, 220, 20, GRAY);
+      DrawText("Wait for 2 seconds...", 290, 220, 20, GRAY);
+
+      DrawRectangle(270, 270, 240, 40, {0, 0, 127, 50});
+      DrawRectangle(270, 270, frameCounter * 2, 40, {0, 0, 255, 100});
+
       break;
     case TITLE:
       // todo: draw title screen
@@ -110,4 +117,10 @@ int main(void) {
   //-------------------------------------------------------------------
 
   return 0;
+}
+
+void setfocus() {
+  if (!IsWindowFocused()) {
+    SetWindowFocused();
+  }
 }

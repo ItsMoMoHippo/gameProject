@@ -1,6 +1,6 @@
 # GameProject
 
-Its me using [raylib](https://github.com/raysan5/raylib) as a graphic library to make a simple game. This repo will include all source files and dependencies I will be using in `src`, `lib` and `include`. For the minimum starting point, I would suggets to copy the `raylib.h`,`raymath.h` and `rlgl.h` from the `include` folder, the `libraylib.a` in the `lib` ffolder and copying the first [example](https://www.raylib.com/examples.html) in the raylib website and use that as a `main.c` or `main.cpp` file. 
+Its me using [raylib](https://github.com/raysan5/raylib) as a graphic library to make a simple game. This repo will include all source files and dependencies I will be using in `src`, `lib` and `include`. For the minimum starting point, I would suggets to copy the `raylib.h`,`raymath.h` and `rlgl.h` from the `include` folder, the `libraylib.a` in the `lib` folder and copying the first [example](https://www.raylib.com/examples.html) in the raylib website and use that as a `main.c` or `main.cpp` file. 
 
 __________________________________________________________________
 
