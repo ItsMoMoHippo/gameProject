@@ -1,3 +1,4 @@
+#include "../include/player.h"
 #include "../include/raylib.h"
 
 typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING } GameScreen;
