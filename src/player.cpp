@@ -1,35 +1,41 @@
-#include <iostream>
+#include "../include/player.h"
 
-class Player {
-  int xPos, yPos, xSpeed, ySpeed;
+Player::Player() {
+  float xpos, ypos, xvelo, yvelo;
+  xpos = ypos = xvelo = yvelo = 0;
+}
 
-  Player() {
-    xPos = 0;
-    yPos = 0;
-    xSpeed = 0;
-    ySpeed = 0;
-  }
-  Player(int xp, int yp, int xs, int ys) {
-    xPos = xp;
-    yPos = yp;
-    xSpeed = xs;
-    ySpeed = ys;
-  }
+Player::Player(float xp, float yp, float xv, float yv) {
+  float xpos = xp;
+  float ypos = yp;
+  float xvelo = xv;
+  float yvelo = yv;
+}
 
-public:
-  const int getXPos() { return xPos; };
-  const int getYPos() { return yPos; };
-  const int getXSpeed() { return xSpeed; };
-  const int getYSpeed() { return ySpeed; };
+void Player::printPos() {
+  std::cout << "xpos: " << xpos << '\n' << "ypos: " << ypos << '\n' << '\n';
+};
+void Player::printVelo() {
+  std::cout << "xvelo: " << xvelo << '\n' << "yvelo: " << yvelo << '\n' << '\n';
+};
+void Player::printInfo() {
+  std::cout << "xpos: " << xpos << '\n'
+            << "ypos: " << ypos << '\n'
+            << "xvelo: " << xvelo << '\n'
+            << "yvelo: " << yvelo << '\n'
+            << '\n';
+};
 
-  void setXPos(int x) { xPos = x; };
-  void setYPos(int y) { yPos = y; };
+float Player::getxPos() { return xpos; };
+float Player::getyPos() { return ypos; };
+float Player::getxVelo() { return xvelo; };
+float Player::getyVelo() { return yvelo; };
 
-  void printInfo() {
-    std::cout << "xPos: " << xPos << '\n'
-              << "yPos: " << yPos << '\n'
-              << "xSpeed: " << xSpeed << '\n'
-              << "ySpeed: " << ySpeed << '\n'
-              << std::endl;
-  }
+void Player::changePos(float xp, float yp) {
+  xpos = xp;
+  ypos = yp;
+};
+void Player::changeVelo(float xv, float yv) {
+  xvelo += xv;
+  yvelo += yv;
 };

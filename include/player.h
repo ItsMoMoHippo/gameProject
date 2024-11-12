@@ -1,13 +1,27 @@
-#ifndef DEBUG
+#pragma once
 
-const int getXPos();
-const int getYPos();
-const int getXSpeed();
-const int getYSpeed();
+#include <iostream>
 
-void setXPos(int x);
-void setYPos(int y);
+class Player {
+private:
+  int xpos;
+  int ypos;
+  int xvelo;
+  int yvelo;
 
-void printInfo();
+public:
+  Player();
+  Player(float xp, float yp, float xv, float yv);
 
-#endif // !DEBU#
+  void printPos();
+  void printVelo();
+  void printInfo();
+
+  float getxPos();
+  float getyPos();
+  float getxVelo();
+  float getyVelo();
+
+  void changePos(float, float);
+  void changeVelo(float, float);
+};
