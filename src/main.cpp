@@ -46,7 +46,6 @@ int main(void) {
       break;
     case GAMEPLAY:
       // todo: update gamplay screen variables here
-
       // press enter to change to ending screen
       if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP)) {
         currentScreen = ENDING;
