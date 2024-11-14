@@ -6,7 +6,7 @@ __________________________________________________________________
 
 ## Compiling and running the game
 
-I will be using cmake using the [`CMakeLists.txt`](https://github.com/ItsMoMoHippo/gameProject/blob/main/README.md) file
+I will be using [cmake](https://cmake.org/download/) using the [`CMakeLists.txt`](https://github.com/ItsMoMoHippo/gameProject/blob/main/README.md) file
 to compile the game;
 
 > - first `cd` into the gameproject folder
@@ -17,7 +17,7 @@ to compile the game;
 
 This should make the build folder, use cmake to make the makefiles, then using the makefiles build and compile the game and then run it.
 
-Alternactively, you could use zig build system to make everything instead.
+Alternactively, you could use zig build system to make everything instead by making a `build.zig` file in the root directory, making sure to link to `c++17` standard library and `raylib`, `opengl32`, `gdi32` and `winmm`. After run `zig build` in the terminal and zig should ouput the exe (you might have to specify in the `build.zig` to make an executable).
 
 __________________________________________________________________
 
