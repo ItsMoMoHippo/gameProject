@@ -12,19 +12,35 @@ private:
   const std::array<int, 2> playerSize;
 
 public:
+  /* Empty constructor for player */
   Player();
+  /* Constructor with full options */
   Player(const std::array<float, 2> &position,
          const std::array<float, 2> &velocity);
 
-  std::array<float, 2> getPos();
-  std::array<float, 2> getVelo();
+  /* return position as vector */
+  const std::array<float, 2> &getPos();
+  /* return velocity as vector */
+  const std::array<float, 2> &getVelo();
+  /* returns size of player */
+  const int getSize(bool);
 
-  void printPos();
-  void printVelo();
+  /* prints player position to the console */
+  const void printPos();
+  /* prints player velocity to the console */
+  const void printVelo();
 
+  /* updates the player position
+   * has nothing to do with player velocity
+   * takes float for x and y pos */
   void updatePos(const float, const float);
+  /* updates the player velocity
+   * takes float for x and y velocity */
   void updateVelo(const float, const float);
+  /* updates player position due to player velocity */
   void movePos();
+  /* returns bottom of player, for collision purposes */
+  void getBottom();
 };
 
 #endif // !PLAYER_H
