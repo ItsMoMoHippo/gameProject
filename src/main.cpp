@@ -2,7 +2,9 @@
 #include "../include/raylib.h"
 #include "../include/utils.h"
 
-constexpr float gravity = -9.8f;
+#define GRAVITY 9.8
+#define MOVESPEED 3.0
+constexpr float jumpSpeed = 10.0f;
 
 int main(void) {
 
@@ -16,21 +18,40 @@ int main(void) {
   int frameCounter = 0;
   SetTargetFPS(60);
 
-  Player player;
+  Player player({120, 120}, {0, 0});
   //--------------------------------------------------------------------
+
+  setFocus();
 
   // Main game loop
   while (!WindowShouldClose()) {
-
-    setFocus();
     // update var
+
+    /* Player movement */
+    if (IsKeyDown(KEY_A)) {
+      player.updateVelo({MOVESPEED, 0});
+    } else if (IsKeyDown(KEY_D)) {
+      player.updateVelo({-MOVESPEED, 0});
+    } else {
+      player.updateVelo({0, 0});
+    }
+    if (IsKeyDown(KEY_W)) {
+      player.updateVelo({0, -MOVESPEED}); // inverted since its relative to
+                                          // pixel co-ordinate space
+    } else if (IsKeyDown(KEY_S)) {
+      player.updateVelo({0, MOVESPEED});
+    } else {
+      player.updateVelo({0, 0});
+    }
+    player.movePos();
 
     // draw
     BeginDrawing();
 
     ClearBackground(RAYWHITE);
 
-    DrawRectangle(120, 120, player.getSize(true), player.getSize(false), RED);
+    DrawRectangle(player.getPosX(), player.getPosY(), player.getSize(true),
+                  player.getSize(false), RED);
 
     EndDrawing();
     //-----------------------------------------------------------------

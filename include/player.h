@@ -19,7 +19,8 @@ public:
          const std::array<float, 2> &velocity);
 
   /* return position as vector */
-  const std::array<float, 2> &getPos();
+  const float &getPosX();
+  const float &getPosY();
   /* return velocity as vector */
   const std::array<float, 2> &getVelo();
   /* returns size of player */
@@ -32,11 +33,11 @@ public:
 
   /* updates the player position
    * has nothing to do with player velocity
-   * takes float for x and y pos */
-  void updatePos(const float, const float);
+   * takes float array for x and y pos */
+  void updatePos(const std::array<float, 2> &);
   /* updates the player velocity
-   * takes float for x and y velocity */
-  void updateVelo(const float, const float);
+   * takes float array for x and y velocity */
+  void updateVelo(const std::array<float, 2> &);
   /* updates player position due to player velocity */
   void movePos();
   /* returns bottom of player, for collision purposes */
