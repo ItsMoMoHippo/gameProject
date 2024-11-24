@@ -27,12 +27,11 @@ void Player::updatePos(const std::array<float, 2> &a) {
   pos[0] = a[0];
   pos[1] = a[1];
 }
-void Player::updateVelo(const std::array<float, 2> &a) {
-  velo[0] = a[0];
-  velo[1] = a[1];
-}
+void Player::updateVeloX(const float &a) { velo[0] += a; }
+void Player::updateVeloY(const float &a) { velo[1] += a; }
 void Player::movePos() {
   pos[0] += velo[0];
   pos[1] += velo[1];
 }
+void Player::resetVelocity() { velo[0] = velo[1] = 0; }
 void Player::getBottom() {}

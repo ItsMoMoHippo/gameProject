@@ -35,11 +35,14 @@ public:
    * has nothing to do with player velocity
    * takes float array for x and y pos */
   void updatePos(const std::array<float, 2> &);
-  /* updates the player velocity
-   * takes float array for x and y velocity */
-  void updateVelo(const std::array<float, 2> &);
+  /* updates the player x velocity */
+  void updateVeloX(const float &);
+  /* updates the player y velocity */
+  void updateVeloY(const float &);
   /* updates player position due to player velocity */
   void movePos();
+  /* clears  player's velocity */
+  void resetVelocity();
   /* returns bottom of player, for collision purposes */
   void getBottom();
 };

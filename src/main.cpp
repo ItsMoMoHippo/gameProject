@@ -28,20 +28,21 @@ int main(void) {
     // update var
 
     /* Player movement */
+    player.resetVelocity();
     if (IsKeyDown(KEY_A)) {
-      player.updateVelo({MOVESPEED, 0});
+      player.updateVeloX(-MOVESPEED);
     } else if (IsKeyDown(KEY_D)) {
-      player.updateVelo({-MOVESPEED, 0});
+      player.updateVeloX(MOVESPEED);
     } else {
-      player.updateVelo({0, 0});
+      player.updateVeloX(0);
     }
     if (IsKeyDown(KEY_W)) {
-      player.updateVelo({0, -MOVESPEED}); // inverted since its relative to
-                                          // pixel co-ordinate space
+      player.updateVeloY(-MOVESPEED); // inverted since its relative to
+                                      // pixel co-ordinate space
     } else if (IsKeyDown(KEY_S)) {
-      player.updateVelo({0, MOVESPEED});
+      player.updateVeloY(MOVESPEED);
     } else {
-      player.updateVelo({0, 0});
+      player.updateVeloY(0);
     }
     player.movePos();
 
