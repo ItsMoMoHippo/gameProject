@@ -1,3 +1,4 @@
+#include "../include/platform.h"
 #include "../include/player.h"
 #include "../include/raylib.h"
 #include "../include/utils.h"
@@ -19,6 +20,7 @@ int main(void) {
   SetTargetFPS(60);
 
   Player player({120, 120}, {0, 0});
+  Platform platform({70, 30}, {120, 200});
   //--------------------------------------------------------------------
 
   setFocus();
@@ -30,20 +32,20 @@ int main(void) {
     /* Player movement */
     player.resetVelocity();
     if (IsKeyDown(KEY_A)) {
-      player.updateVeloX(-MOVESPEED);
+      player.updateVelo(Axis::X, -MOVESPEED);
     } else if (IsKeyDown(KEY_D)) {
-      player.updateVeloX(MOVESPEED);
+      player.updateVelo(Axis::X, MOVESPEED);
     } else {
-      player.updateVeloX(0);
+      player.updateVelo(Axis::X, 0);
     }
     if (IsKeyDown(KEY_W)) {
-      player.updateVeloY(-MOVESPEED); // inverted since its relative to
-                                      // pixel co-ordinate space
+      player.updateVelo(Axis::Y, -MOVESPEED); // uses pixel coord system
     } else if (IsKeyDown(KEY_S)) {
-      player.updateVeloY(MOVESPEED);
+      player.updateVelo(Axis::Y, MOVESPEED);
     } else {
-      player.updateVeloY(0);
+      player.updateVelo(Axis::Y, 0);
     }
+    // player.applyGravity(GRAVITY);
     player.movePos();
 
     // draw
@@ -51,8 +53,8 @@ int main(void) {
 
     ClearBackground(RAYWHITE);
 
-    DrawRectangle(player.getPosX(), player.getPosY(), player.getSize(true),
-                  player.getSize(false), RED);
+    DrawRectangle(player.getPos(Axis::X), player.getPos(Axis::Y),
+                  player.getSize(Axis::X), player.getSize(Axis::Y), RED);
 
     EndDrawing();
     //-----------------------------------------------------------------

@@ -2,6 +2,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H()
 
+#include "../include/utils.h"
 #include <array>
 #include <iostream>
 
@@ -18,13 +19,15 @@ public:
   Player(const std::array<float, 2> &position,
          const std::array<float, 2> &velocity);
 
-  /* return position as vector */
-  const float &getPosX();
-  const float &getPosY();
-  /* return velocity as vector */
-  const std::array<float, 2> &getVelo();
-  /* returns size of player */
-  const int getSize(bool);
+  /* return position as float
+   * takes enum for axis */
+  const float &getPos(const Axis axis) const;
+  /* return velocity as float
+   * takes enum for axis */
+  const float &getVelo(const Axis axis) const;
+  /* returns size of player
+   * takes enum for axis */
+  const int &getSize(const Axis axis) const;
 
   /* prints player position to the console */
   const void printPos();
@@ -35,16 +38,16 @@ public:
    * has nothing to do with player velocity
    * takes float array for x and y pos */
   void updatePos(const std::array<float, 2> &);
-  /* updates the player x velocity */
-  void updateVeloX(const float &);
-  /* updates the player y velocity */
-  void updateVeloY(const float &);
+  /* updates the player velocity
+   * takes enum for axis */
+  void updateVelo(const Axis axis, const float &);
   /* updates player position due to player velocity */
   void movePos();
   /* clears  player's velocity */
   void resetVelocity();
+  /* applies gravity */
+  void applyGravity(const float &);
   /* returns bottom of player, for collision purposes */
-  void getBottom();
 };
 
 #endif // !PLAYER_H
